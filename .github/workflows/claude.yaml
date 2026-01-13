@@ -32,7 +32,7 @@ jobs:
           claude_args: |
             --model claude-sonnet-4-5
             --allowedTools "mcp__github,Read,Grep,Glob,WebSearch,LS,Edit,Bash(npm:*)"
-          trigger_phrase: "/claude"
+          trigger_phrase: "@claude"
           assignee_trigger: "claude"
           label_trigger: "claude"
         env:
