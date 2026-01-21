@@ -33,4 +33,5 @@ export interface CategorySummary {
   category: CategoryType;
   amount: number;
   percentage: number;
+  [key: string]: string | number;
 }
