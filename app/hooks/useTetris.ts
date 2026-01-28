@@ -251,7 +251,7 @@ export function useTetris() {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [gameState.isGameOver, movePiece, rotate, hardDrop, togglePause]);
+  }, [gameState.isGameOver, gameState.isPaused, movePiece, rotate, hardDrop, togglePause]);
 
   return {
     gameState,

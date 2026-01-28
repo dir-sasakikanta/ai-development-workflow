@@ -4,14 +4,14 @@ import { useTetris } from '@/app/hooks/useTetris';
 import { TETROMINO_COLORS, BOARD_WIDTH, BOARD_HEIGHT } from '@/app/constants/tetris';
 import { getGhostPosition } from '@/app/utils/tetris';
 
-import type { Board, CellValue, Tetromino } from '@/app/types/tetris';
+import type { DisplayBoard, Tetromino } from '@/app/types/tetris';
 
 export default function TetrisPage() {
   const { gameState, resetGame, togglePause } = useTetris();
 
   const renderBoard = () => {
     // Create a copy of the board to render
-    const displayBoard: Board = gameState.board.map(row => [...row]);
+    const displayBoard: DisplayBoard = gameState.board.map(row => [...row]);
 
     // Add ghost piece
     if (gameState.currentPiece && !gameState.isGameOver) {
@@ -31,7 +31,7 @@ export default function TetrisPage() {
               displayBoard[boardY][boardX] === null
             ) {
               // Mark as ghost piece (we'll render it differently)
-              displayBoard[boardY][boardX] = 'ghost' as CellValue;
+              displayBoard[boardY][boardX] = 'ghost';
             }
           }
         }
