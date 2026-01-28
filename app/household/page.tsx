@@ -557,7 +557,10 @@ export default function HouseholdPage() {
                               cx="50%"
                               cy="50%"
                               outerRadius={80}
-                              label={(entry: CategorySummary) => `${entry.category} ${entry.percentage.toFixed(1)}%`}
+                              label={(entry) => {
+                                const data = entry as unknown as CategorySummary;
+                                return `${data.category} ${data.percentage.toFixed(1)}%`;
+                              }}
                             >
                               {expenseSummary.map((entry) => (
                                 <Cell key={entry.category} fill={CATEGORY_COLORS[entry.category]} />
@@ -607,7 +610,10 @@ export default function HouseholdPage() {
                               cx="50%"
                               cy="50%"
                               outerRadius={80}
-                              label={(entry: CategorySummary) => `${entry.category} ${entry.percentage.toFixed(1)}%`}
+                              label={(entry) => {
+                                const data = entry as unknown as CategorySummary;
+                                return `${data.category} ${data.percentage.toFixed(1)}%`;
+                              }}
                             >
                               {incomeSummary.map((entry) => (
                                 <Cell key={entry.category} fill={CATEGORY_COLORS[entry.category]} />
