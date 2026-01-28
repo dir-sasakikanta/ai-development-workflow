@@ -566,7 +566,7 @@ export default function HouseholdPage() {
                                 <Cell key={entry.category} fill={CATEGORY_COLORS[entry.category]} />
                               ))}
                             </Pie>
-                            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                            <Tooltip formatter={(value) => value !== undefined ? formatCurrency(value as number) : ''} />
                           </PieChart>
                         </ResponsiveContainer>
                       </div>
@@ -619,7 +619,7 @@ export default function HouseholdPage() {
                                 <Cell key={entry.category} fill={CATEGORY_COLORS[entry.category]} />
                               ))}
                             </Pie>
-                            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                            <Tooltip formatter={(value) => value !== undefined ? formatCurrency(value as number) : ''} />
                           </PieChart>
                         </ResponsiveContainer>
                       </div>
