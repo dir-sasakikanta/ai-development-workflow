@@ -196,6 +196,7 @@ export function useTetris() {
     return () => {
       if (dropIntervalRef.current) {
         clearInterval(dropIntervalRef.current);
+        dropIntervalRef.current = null;
       }
     };
   }, [gameState.isGameOver, gameState.isPaused, isFastDrop, movePiece]);
