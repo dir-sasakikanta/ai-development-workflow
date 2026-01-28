@@ -14,7 +14,7 @@ import {
   getCategorySummary,
   getMonthsInRange,
 } from '@/app/utils/household';
-import type { TransactionType, CategoryType } from '@/app/types/household';
+import type { TransactionType, CategoryType, CategorySummary } from '@/app/types/household';
 
 export default function HouseholdPage() {
   const { transactions, addTransaction, updateTransaction, deleteTransaction } = useTransactions();
@@ -557,13 +557,16 @@ export default function HouseholdPage() {
                               cx="50%"
                               cy="50%"
                               outerRadius={80}
-                              label={(entry) => `${entry.category} ${entry.percentage.toFixed(1)}%`}
+                              label={(entry) => {
+                                const data = entry as unknown as CategorySummary;
+                                return `${data.category} ${data.percentage.toFixed(1)}%`;
+                              }}
                             >
                               {expenseSummary.map((entry) => (
                                 <Cell key={entry.category} fill={CATEGORY_COLORS[entry.category]} />
                               ))}
                             </Pie>
-                            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                            <Tooltip formatter={(value) => value !== undefined ? formatCurrency(value as number) : ''} />
                           </PieChart>
                         </ResponsiveContainer>
                       </div>
@@ -607,13 +610,16 @@ export default function HouseholdPage() {
                               cx="50%"
                               cy="50%"
                               outerRadius={80}
-                              label={(entry) => `${entry.category} ${entry.percentage.toFixed(1)}%`}
+                              label={(entry) => {
+                                const data = entry as unknown as CategorySummary;
+                                return `${data.category} ${data.percentage.toFixed(1)}%`;
+                              }}
                             >
                               {incomeSummary.map((entry) => (
                                 <Cell key={entry.category} fill={CATEGORY_COLORS[entry.category]} />
                               ))}
                             </Pie>
-                            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                            <Tooltip formatter={(value) => value !== undefined ? formatCurrency(value as number) : ''} />
                           </PieChart>
                         </ResponsiveContainer>
                       </div>
