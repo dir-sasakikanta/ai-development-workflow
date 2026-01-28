@@ -206,6 +206,8 @@ export function useTetris() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (gameState.isGameOver) return;
 
+      if (gameState.isPaused && e.key !== 'p' && e.key !== 'P') return;
+
       switch (e.key) {
         case 'ArrowLeft':
           e.preventDefault();
